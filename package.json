@@ -1,0 +1,29 @@
+{
+  "name": "weatherapp",
+  "version": "1.0.0",
+  "description": "A simple weather forecast site using the weather API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xarmar/WeatherApp.git"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "Xavier Marques",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xarmar/WeatherApp/issues"
+  },
+  "homepage": "https://github.com/xarmar/WeatherApp#readme",
+  "devDependencies": {
+    "css-loader": "^6.0.0",
+    "html-webpack-plugin": "^5.3.2",
+    "sass": "^1.35.2",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.1.0"
+  }
+}

@@ -1,0 +1,36 @@
+#mainContainer {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    h1 {
+        padding: 5px;
+        background-color: sandybrown;
+        max-width: fit-content;
+    }
+    p {
+        text-decoration: underline;
+    }
+}
+
+form {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    input {
+        padding: 5px;
+    }
+    button {
+        border: 2px solid transparent;
+        padding: 5px;
+        background-color: orange;
+        &:hover {
+            cursor: pointer;
+            border: 2px solid black;
+        }
+    }
+}
+
+.invalid {
+    background-color: salmon;
+}

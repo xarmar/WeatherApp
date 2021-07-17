@@ -1,4 +1,5 @@
 require('./styles.scss');
+
 import { configApi } from "./config";
 import { helperfunction } from "./helperFunctions";
 import { temperatureConversion } from "./temperatureConversion";
@@ -31,7 +32,7 @@ submitButton.addEventListener('click', function(event) {
     
 })
 
-// Get API response
+// Get API response - Use Async Await
 const getApiResponseByCity = async (city) => {
     try {
         let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${configApi.apiKey}`);
@@ -52,9 +53,15 @@ const getWeatherDetails = (parsedJson) => {
             tempMax: `${parsedJson.main.temp_max}`
         };
         let weather = {
-            description: `${parsedJson.weather[0].description}`
+            main: `${parsedJson.weather[0].main}`,
+            description: `${parsedJson.weather[0].description}`,
+            iconCode: `${parsedJson.weather[0].icon}`
         };
         populateForecastDiv(temperatures, weather, parsedJson.name);
+        changeBodyBackgroundImage(weather);
+    }
+    else {
+        cityInput.classList.add('invalid');
     }
 }
 
@@ -140,10 +147,15 @@ const populateForecastDiv = (temperatures, weather, nameOfCity) => {
     cityCard.appendChild(cityDiv);
 
     // Creates a Div and p element with description i.e: 'Clear skies'
+    let weatherDescriptionDiv = document.createElement('div');
+    weatherDescriptionDiv.id = 'weatherDescriptionDiv';
     let weatherDescription = document.createElement('p');
     weatherDescription.innerText = weather.description;
     weatherDescription.id = 'description';
-    cityCard.appendChild(weatherDescription);
+    let weatherIcon = document.createElement('img');
+    weatherIcon.src = `http://openweathermap.org/img/w/${weather.iconCode}.png`;
+    helperfunction.appendMultipleNodesToParent(weatherDescriptionDiv, weatherDescription, weatherIcon);
+    cityCard.appendChild(weatherDescriptionDiv);
 
     // Creates a Div and p element with current temperature i.e: '24ºC'
     let currentTemperatureP = document.createElement('p');
@@ -169,4 +181,29 @@ const populateForecastDiv = (temperatures, weather, nameOfCity) => {
     maxTemperatureP.classList.add('celcius');
     cityCard.appendChild(maxTemperatureP);
 
+}
+
+// Set Backgroud Image based on Weather
+const changeBodyBackgroundImage = (weather) => {
+
+        // Change Backgroud Image Based On main weather
+        if(weather.main === 'Clear') {
+            document.body.classList.remove(...document.body.classList);
+            document.body.classList.add('clear');
+        }
+        else if (weather.main === 'Clouds') {
+            document.body.classList.remove(...document.body.classList);
+            document.body.classList.add('clouds');
+        }
+        else if (weather.main === 'Rain') {
+            document.body.classList.remove(...document.body.classList);
+            document.body.classList.add('rain');
+        }
+        else if (weather.main === 'Mist') {
+            document.body.classList.remove(...document.body.classList);
+            document.body.classList.add('mist');
+        }
+        else {
+            document.body.classList.remove(...document.body.classList);
+        }
 }

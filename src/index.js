@@ -68,10 +68,33 @@ const populateForecastDiv = (temperatures, weather, nameOfCity) => {
     chooseUnitsDiv.id = 'chooseUnitsDiv';
     let celsiusOption = document.createElement('p');
     celsiusOption.innerText = 'ºC';
+    celsiusOption.id = 'showInCelsius';
+    celsiusOption.classList.add('chosenOption');
     let fahrenheitOption = document.createElement('p');
     fahrenheitOption.innerText = 'ºF';
+    fahrenheitOption.id = 'showInFahrenheit';
+
+    // Add click listeners for both options
+    celsiusOption.addEventListener('click', function() {
+        if(!celsiusOption.classList.contains('chosenOption')) {
+            celsiusOption.classList.toggle('chosenOption');
+            fahrenheitOption.classList.toggle('chosenOption');
+        }
+    });
+
+    fahrenheitOption.addEventListener('click', function() {
+        if(!fahrenheitOption.classList.contains('chosenOption')) {
+            fahrenheitOption.classList.toggle('chosenOption');
+            celsiusOption.classList.toggle('chosenOption');
+        }
+    });
+
+
+
     helperfunction.appendMultipleNodesToParent(chooseUnitsDiv, celsiusOption, fahrenheitOption);
     forecastDiv.appendChild(chooseUnitsDiv);
+
+
 
     // Create Div that will contain all the properties of asked Div
     let cityCard = document.createElement('div');

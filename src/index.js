@@ -63,6 +63,16 @@ const populateForecastDiv = (temperatures, weather, nameOfCity) => {
 
     helperfunction.removeChildNodes(forecastDiv);
 
+    // Give user option to choose celsius or fahrenheit
+    let chooseUnitsDiv = document.createElement('div');
+    chooseUnitsDiv.id = 'chooseUnitsDiv';
+    let celsiusOption = document.createElement('p');
+    celsiusOption.innerText = 'ºC';
+    let fahrenheitOption = document.createElement('p');
+    fahrenheitOption.innerText = 'ºF';
+    helperfunction.appendMultipleNodesToParent(chooseUnitsDiv, celsiusOption, fahrenheitOption);
+    forecastDiv.appendChild(chooseUnitsDiv);
+
     // Create Div that will contain all the properties of asked Div
     let cityCard = document.createElement('div');
     cityCard.id = 'cityCard';

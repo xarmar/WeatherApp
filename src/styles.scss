@@ -24,7 +24,7 @@ form {
     button {
         border: 2px solid transparent;
         padding: 5px;
-        background-color: orange;
+        background-color: sandybrown;
         &:hover {
             cursor: pointer;
             border: 2px solid black;
@@ -42,6 +42,21 @@ form {
     width: 45%;
     margin: 5%;
     text-align: center;
+    #chooseUnitsDiv {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        p {
+            margin-top: 0px;
+            padding: 10px;
+            background-color: lightskyblue;
+            border: 2px solid transparent;
+            &:hover {
+                cursor: pointer;
+                border: 2px solid black;
+            }
+        }
+    }
     #cityCard {
     font-size: 1.15em;
     max-width: 100%;

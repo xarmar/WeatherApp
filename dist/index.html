@@ -4,20 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather App</title>
 <script defer src="bundle.js"></script></head>
 <body>
     <div id='mainContainer'>
         <h1> Weather App </h1>
-        <p> API based weather forecast App</p>
+        <p> Weather Forecast App (API)</p>
         <div id='formDiv'>
             <form novalidate>
                 <fieldset>
                     <legend>Weather Forecast</legend>
-                    <input type='text' id='cityInput' placeholder="City of Interest" pattern='^[A-Za-z\s]+$'>
+                    <input type='text' id='cityInput' placeholder="City" pattern='^[A-Za-z\s]+$' required>
                     <button type="submit" id='submitButton'>Get Forecast</button>
                 </fieldset>
             </form>
+        </div>
+        <div id='forecastDiv'>
         </div>
     </div>
 </body>

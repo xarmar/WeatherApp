@@ -86,8 +86,8 @@ const populateForecastDiv = (temperatures, weather, nameOfCity) => {
 
             // Populate with correct temperature
             temperature.innerText = temperatureConversion.convertToCelsius(temperatures.temp);
-            minimum.innerText = temperatureConversion.convertToCelsius(temperatures.tempMin);
-            maximum.innerText = temperatureConversion.convertToCelsius(temperatures.tempMax);
+            minimum.innerText = `Min: ${temperatureConversion.convertToCelsius(temperatures.tempMin)}`;
+            maximum.innerText = `Max: ${temperatureConversion.convertToCelsius(temperatures.tempMax)}`;
             
             // Give correct suffix
             temperature.classList.add('celsius');
@@ -109,8 +109,8 @@ const populateForecastDiv = (temperatures, weather, nameOfCity) => {
 
             // Populate with correct temperature
             temperature.innerText = temperatureConversion.convertToFahrenheit(temperatures.temp);
-            minimum.innerText = temperatureConversion.convertToFahrenheit(temperatures.tempMin);
-            maximum.innerText = temperatureConversion.convertToFahrenheit(temperatures.tempMax);
+            minimum.innerText = `Min: ${temperatureConversion.convertToFahrenheit(temperatures.tempMin)}`;
+            maximum.innerText = `Max: ${temperatureConversion.convertToFahrenheit(temperatures.tempMax)}`;
             
             // Give correct suffix
             temperature.classList.add('fahrenheit');

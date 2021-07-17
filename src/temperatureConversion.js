@@ -5,8 +5,8 @@ export const temperatureConversion = (() => {
         return celcius
     }
 
-    const convertToFahrenheit = (celcius) => {
-        let fahrenheit = ((celcius * 1.8) + 32).toFixed(1);
+    const convertToFahrenheit = (kelvin) => {
+        let fahrenheit = ((kelvin * 1.8) - 459.67).toFixed(1);
         return fahrenheit
     }
 

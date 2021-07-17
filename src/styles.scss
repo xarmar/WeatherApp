@@ -1,23 +1,24 @@
+@mixin centerHorizontally {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #mainContainer {
     display: flex;
     flex-direction: column;
     margin: auto;
     align-items: center;
     h1 {
-        padding: 5px;
+        padding: 10px;
         background-color: sandybrown;
         max-width: fit-content;
-    }
-    p {
-        text-decoration: underline;
     }
 }
 
 form {
     margin-top: 50px;
-    display: flex;
-    flex-direction: column;
     input {
+        flex-direction: row;
         padding: 5px;
     }
     button {
@@ -33,4 +34,71 @@ form {
 
 .invalid {
     background-color: salmon;
+}
+
+#forecastDiv {
+    @include centerHorizontally();
+    margin-top: 30px;
+    width: 45%;
+    margin: 5%;
+    text-align: center;
+    #cityCard {
+    font-size: 1.15em;
+    max-width: 100%;
+    border: 2px solid sandybrown;
+    display: grid;
+    grid-template-areas: 
+    'city'
+    'temperature'
+    'description'
+    'minimum'
+    'maximum';
+    #city {
+        grid-area: city;
+        background-color: sandybrown;
+        h2 {
+            font-size: 1.5em;
+            padding: 0;
+        }
+    }
+    #description {
+        grid-area: description;
+        font-weight: 550;
+    }
+    #temperature {
+        grid-area: temperature;
+        font-weight: 550;
+    }
+    #minimum {
+        @include centerHorizontally();
+        grid-area: minimum;
+        &::before {
+            content: '❋ ';
+            color: lightseagreen;
+        }
+    }
+    #maximum {
+        @include centerHorizontally();
+        grid-area: maximum;
+        &::before {
+            content: '☀ ';
+            color: salmon;
+        }
+    }
+    }
+    #temperaturesDiv {
+        display: flex;
+        flex-direction: column;
+        div {
+            margin: 5px 10px 5px 10px;
+        }
+    }
+}
+
+// Celcius and Fahrenheit Suffix
+.celcius::after {
+    content: ' ºC';
+}
+.fahrenheit::after {
+    content: ' ºF';
 }

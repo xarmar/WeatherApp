@@ -61,6 +61,7 @@ const getWeatherDetails = (parsedJson) => {
 // Populate Div with Forecast
 const populateForecastDiv = (temperatures, weather, nameOfCity) => {
 
+    // Remove Previous Child Nodes of Div
     helperfunction.removeChildNodes(forecastDiv);
 
     // Give user option to choose celsius or fahrenheit
@@ -79,6 +80,22 @@ const populateForecastDiv = (temperatures, weather, nameOfCity) => {
         if(!celsiusOption.classList.contains('chosenOption')) {
             celsiusOption.classList.toggle('chosenOption');
             fahrenheitOption.classList.toggle('chosenOption');
+            let temperature = document.querySelector('#temperature');
+            let minimum = document.querySelector('#minimum');
+            let maximum = document.querySelector('#maximum');
+
+            // Populate with correct temperature
+            temperature.innerText = temperatureConversion.convertToCelsius(temperatures.temp);
+            minimum.innerText = temperatureConversion.convertToCelsius(temperatures.tempMin);
+            maximum.innerText = temperatureConversion.convertToCelsius(temperatures.tempMax);
+            
+            // Give correct suffix
+            temperature.classList.add('celsius');
+            temperature.classList.remove('fahrenheit');
+            minimum.classList.add('celsius');
+            minimum.classList.remove('fahrenheit');
+            maximum.classList.add('celsius');
+            maximum.classList.remove('fahrenheit');
         }
     });
 
@@ -86,17 +103,30 @@ const populateForecastDiv = (temperatures, weather, nameOfCity) => {
         if(!fahrenheitOption.classList.contains('chosenOption')) {
             fahrenheitOption.classList.toggle('chosenOption');
             celsiusOption.classList.toggle('chosenOption');
+            let temperature = document.querySelector('#temperature');
+            let minimum = document.querySelector('#minimum');
+            let maximum = document.querySelector('#maximum');
+
+            // Populate with correct temperature
+            temperature.innerText = temperatureConversion.convertToFahrenheit(temperatures.temp);
+            minimum.innerText = temperatureConversion.convertToFahrenheit(temperatures.tempMin);
+            maximum.innerText = temperatureConversion.convertToFahrenheit(temperatures.tempMax);
+            
+            // Give correct suffix
+            temperature.classList.add('fahrenheit');
+            temperature.classList.remove('celsius');
+            minimum.classList.add('fahrenheit');
+            minimum.classList.remove('celsius');
+            maximum.classList.add('fahrenheit');
+            maximum.classList.remove('celsius');
         }
     });
-
 
 
     helperfunction.appendMultipleNodesToParent(chooseUnitsDiv, celsiusOption, fahrenheitOption);
     forecastDiv.appendChild(chooseUnitsDiv);
 
-
-
-    // Create Div that will contain all the properties of asked Div
+    // Create 'cityCard' Div that will contain all the properties of asked Div
     let cityCard = document.createElement('div');
     cityCard.id = 'cityCard';
     forecastDiv.appendChild(cityCard);

@@ -9,3 +9,4 @@
 
 # What I Learned
 - How to use promises, in this case, using the async-await pattern to fetch data from an API and serve it to the user.
+- How to use Dotenv to create environment variables and only expose what I choose and use.

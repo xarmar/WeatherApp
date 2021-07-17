@@ -40,21 +40,28 @@ form {
     @include centerHorizontally();
     margin-top: 30px;
     width: 45%;
-    margin: 5%;
+    margin: 35px;
     text-align: center;
     #chooseUnitsDiv {
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         p {
-            margin-top: 0px;
+            margin: 0px 6px 15px 6px;
             padding: 10px;
             background-color: lightskyblue;
             border: 2px solid transparent;
+            -webkit-user-select: none; /* Safari */        
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE10+/Edge */
+            user-select: none; /* Standard */
             &:hover {
                 cursor: pointer;
                 border: 2px solid black;
             }
+        }
+        .chosenOption {
+            border: 2px solid black;
         }
     }
     #cityCard {
